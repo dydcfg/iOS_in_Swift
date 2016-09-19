@@ -49,6 +49,9 @@ class ViewController: UIViewController{
         if floor(x) == x{
             resultString.text=String(Int(x))
         }
+        else{
+            resultString.text=String(x)
+        }
     }
     
     func appendDig(_ dig: Int) {
@@ -66,10 +69,8 @@ class ViewController: UIViewController{
             curVal=curVal*10+Float(dig)
         }
         
-        tmpString.index
-        
-        if (curVal != 0.0) && (operatorType == -1) && (tmpString[0] != "-") {
-            
+        if (curVal != 0.0) && (operatorType == -1) && (tmpString[tmpString.characters.startIndex] != "-") {
+            tmpString="-"+tmpString
         }
         
         printTmp(tmpString)
@@ -77,7 +78,9 @@ class ViewController: UIViewController{
     }
     
     func evalIt() {
-
+        ans=ans+Float(operatorType)*curVal
+        
+        printIt(ans)
     }
     
     func addDecimal() {
@@ -98,7 +101,14 @@ class ViewController: UIViewController{
     }
     
     func allClear() {
-        
+        ans=0.0
+        curVal=0.0
+        operatorType=1
+        resultString.text="0"
+        tmpString=""
+        deciState=false
+        deciCount=1
+        lastButtonTag=0
     }
     
     // Button click handler
@@ -130,10 +140,16 @@ class ViewController: UIViewController{
             allClear()
         }
         if sender.tag==13 {
+            evalIt()
             operatorType = 1
+            tmpString=""
+            curVal=0.0
         }
         if sender.tag==14 {
+            evalIt()
             operatorType = -1
+            tmpString=""
+            curVal=0.0
         }
         lastButtonTag=sender.tag
     }

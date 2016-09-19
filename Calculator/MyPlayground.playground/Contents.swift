@@ -4,6 +4,6 @@ import UIKit
 
 var str = "Hello, playground"
 
-var s=""
+str.characters.index(str.characters.startIndex, offsetBy: 0)
 
-s.characters.count
+
