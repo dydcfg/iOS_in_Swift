@@ -27,7 +27,7 @@ class ViewController: UIViewController{
         }
         ans=0.0
         curVal=0.0
-        operatorType=1
+        operatorType=0
         resultString.text="0"
         tmpString=""
         deciState=false
@@ -78,8 +78,15 @@ class ViewController: UIViewController{
     }
     
     func evalIt() {
-        ans=ans+Float(operatorType)*curVal
-        
+        if operatorType==0 {
+            if ans==0.0 {
+                ans=ans+curVal
+            }
+        }
+        else{
+            ans=ans+Float(operatorType)*curVal
+        }
+
         printIt(ans)
     }
     
