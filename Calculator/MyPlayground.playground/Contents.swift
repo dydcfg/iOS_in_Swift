@@ -4,6 +4,8 @@ import UIKit
 
 var str = "Hello, playground"
 
-str.characters.index(str.characters.startIndex, offsetBy: 0)
+var items = ["a","f","sd"]
 
+items.remove(at: 1)
 
+items
